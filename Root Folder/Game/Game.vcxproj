@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{137AF3D0-9F86-420D-9F37-71F0357AFF76}</ProjectGuid>
     <RootNamespace>Game</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -75,6 +75,10 @@
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\张瑾\Desktop\2018-Game-master\Root Folder\Dependencies\GLFW\include;C:\Users\张瑾\Desktop\2018-Game-master\Root Folder\Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\张瑾\Desktop\2018-Game-master\Root Folder\Dependencies\GLFW\lib-vc2015;C:\Users\张瑾\Desktop\2018-Game-master\Root Folder\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -93,7 +97,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>openGL32.lib;glew32s.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -125,6 +133,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Render Engine\terrainRenderer\TerrainRenderer.cpp" />
+    <ClCompile Include="Render Engine\terrainRenderer\TerrainShader.cpp" />
+    <ClCompile Include="Render Engine\toolbox\color\Color.cpp" />
     <ClCompile Include="Resource Management\glRequestProcessing\glrequestprocessor.cpp" />
     <ClCompile Include="Source\entity\models.cpp" />
     <ClCompile Include="Render Engine\buffers\buffer.cpp" />
@@ -136,6 +147,13 @@
     <ClCompile Include="Render Engine\toolbox\maths\vec2.cpp" />
     <ClCompile Include="Render Engine\toolbox\maths\vec3.cpp" />
     <ClCompile Include="Render Engine\toolbox\maths\vec4.cpp" />
+    <ClCompile Include="World\generator\ColorGenerator.cpp" />
+    <ClCompile Include="World\generator\GridGenerator.cpp" />
+    <ClCompile Include="World\generator\NormalsGenerator.cpp" />
+    <ClCompile Include="World\generator\PerlinNoiseGenerator.cpp" />
+    <ClCompile Include="World\terrain\Terrain.cpp" />
+    <ClCompile Include="World\worldConfig\WorldConfigs.cpp" />
+    <ClCompile Include="World\world\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render Engine\shaders\dragonshader.h" />
@@ -147,9 +165,12 @@
     <ClInclude Include="Render Engine\shaders\uniformvec2.h" />
     <ClInclude Include="Render Engine\shaders\uniformvec3.h" />
     <ClInclude Include="Render Engine\shaders\uniformvec4.h" />
+    <ClInclude Include="Render Engine\terrainRenderer\TerrainRenderer.h" />
+    <ClInclude Include="Render Engine\terrainRenderer\TerrainShader.h" />
     <ClInclude Include="Render Engine\textures\texture.h" />
     <ClInclude Include="Render Engine\textures\textureloadrequest.h" />
     <ClInclude Include="Render Engine\textures\texturemanager.h" />
+    <ClInclude Include="Render Engine\toolbox\color\Color.h" />
     <ClInclude Include="Resource Management\glRequestProcessing\glrequest.h" />
     <ClInclude Include="Resource Management\glRequestProcessing\glrequestprocessor.h" />
     <ClInclude Include="Resource Management\glRequestProcessing\glrequestqueue.h" />
@@ -166,12 +187,21 @@
     <ClInclude Include="Render Engine\toolbox\maths\vec3.h" />
     <ClInclude Include="Render Engine\toolbox\maths\vec4.h" />
     <ClInclude Include="Resource Management\utils\fileutils.h" />
+    <ClInclude Include="World\generator\ColorGenerator.h" />
+    <ClInclude Include="World\generator\GridGenerator.h" />
+    <ClInclude Include="World\generator\NormalsGenerator.h" />
+    <ClInclude Include="World\generator\PerlinNoiseGenerator.h" />
+    <ClInclude Include="World\terrain\Terrain.h" />
+    <ClInclude Include="World\worldConfig\WorldConfigs.h" />
+    <ClInclude Include="World\world\World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\shaders\basic.frag" />
     <None Include="Source\shaders\basic.vert" />
     <None Include="Source\shaders\dragon.frag" />
     <None Include="Source\shaders\dragon.vert" />
+    <None Include="Source\shaders\terrainFragment.glsl" />
+    <None Include="Source\shaders\terrainVertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
