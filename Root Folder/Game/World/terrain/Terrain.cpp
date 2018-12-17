@@ -1,7 +1,7 @@
-#include "Terrain.h"
-#include "..\world\World.h"
+#include "terrain.h"
+#include "..\world\world.h"
 #include "..\..\Render Engine\buffers\buffer.h"
-#include "..\generator\GridGenerator.h"
+#include "..\generator\gridGenerator.h"
 
 const int Terrain::GRID_COUNT = (World::DESIRED_VERTEX_COUNT - 1) / World::CHUNK_COUNT;
 const int Terrain::VERTEX_COUNT = GRID_COUNT + 1;

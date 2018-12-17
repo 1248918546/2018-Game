@@ -1,4 +1,4 @@
-#include "WorldConfigs.h"
+#include "worldConfigs.h"
 #include "..\..\Render Engine\toolbox\maths\maths_func.h"
 
 float WorldConfigs::EDGE_ABOVE_WATER = 0.5f;

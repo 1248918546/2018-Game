@@ -1,8 +1,8 @@
 #pragma once
 #pragma once
 
-#include "..\..\Render Engine\toolbox\color\Color.h"
-#include "..\worldConfig\WorldConfigs.h"
+#include "..\..\Render Engine\toolbox\color.h"
+#include "..\worldConfig\worldConfigs.h"
 
 #include <map>
 

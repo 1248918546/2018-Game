@@ -8,8 +8,8 @@
 #include "Render Engine/buffers/vertexarray.h"
 #include "Source/entity/models.h"
 #include "Source/main/camera.h"
-#include "World/world/World.h"
-#include "Render Engine/terrainRenderer/TerrainRenderer.h"
+#include "World/world/world.h"
+#include "Render Engine/terrain renderer/terrainRenderer.h"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -31,7 +31,7 @@ int main() {
 	**/
 
 	World world = World(WorldConfigs());
-	TerrainRenderer terrainRender("source/shaders/terrainVertex.glsl", "source/shaders/terrainFragment.glsl");
+	TerrainRenderer terrainRender("source/shaders/terrain.vert", "source/shaders/terrain.frag");
 	terrainRender.shader->enable();
 
 	terrainRender.shader->projectionMatrix->load(mat4::perspective(45, (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 300));

@@ -1,9 +1,9 @@
 #pragma once
 #pragma once
-#include "..\..\Render Engine\toolbox\color\Color.h"
-#include "..\worldConfig\WorldConfigs.h"
-#include "..\terrain\Terrain.h"
-#include "..\generator\PerlinNoiseGenerator.h"
+#include "..\..\Render Engine\toolbox\color.h"
+#include "..\worldConfig\worldConfigs.h"
+#include "..\terrain\terrain.h"
+#include "..\generator\perlinNoiseGenerator.h"
 
 using namespace std;
 

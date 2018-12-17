@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "..\..\Render Engine\toolbox\maths\vec3.h"
-#include "..\..\Render Engine\toolbox\color\Color.h"
+#include "..\..\Render Engine\toolbox\color.h"
 #include "..\..\Render Engine\buffers\vertexarray.h"
 #include "..\..\Render Engine\buffers\indexbuffer.h"
 
