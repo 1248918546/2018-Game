@@ -15,13 +15,13 @@ public:
 	static const int SIZE;
 	static const int GRID_SQUARE_SIZE;
 
-	VertexArray *vao;
-	IndexBuffer *ibo;
-	vector<vec3u> indices;
+	VertexArray *m_vao;
+	IndexBuffer *m_ibo;
+	vector<vec3u> m_indices;
 
-	vector<vec3> positions;
-	vector<vec3> normals;
-	vector<vec3> colors;
+	vector<vec3> m_positions;
+	vector<vec3> m_normals;
+	vector<vec3> m_colors;
 
 public:
 	Terrain();

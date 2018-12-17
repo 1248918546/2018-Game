@@ -16,8 +16,8 @@ public:
 	static const int DESIRED_VERTEX_COUNT = 138;  //每个方向138个顶点?
 
 private:
-	WorldConfigs configs;
-	vector<vector<Terrain>> terrains;
+	WorldConfigs m_configs;
+	vector<vector<Terrain>> m_terrains;
 
 public:
 	World(const WorldConfigs &_configs);

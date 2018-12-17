@@ -15,7 +15,7 @@ private:
 	const Color BACK_COLOR = Color(111.0f, 80.0f, 45.0f, true);
 	const Color SNOW_COLOR = Color(0.7f, 0.7f, 0.75f);
 
-	map<float, Color> colorProfile;
+	map<float, Color> m_colorProfile;
 
 public:
 	ColorGenerator();

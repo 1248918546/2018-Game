@@ -31,7 +31,7 @@ int main() {
 	**/
 
 	World world = World(WorldConfigs());
-	TerrainRenderer terrainRender("source/shaders/terrain.vert", "source/shaders/terrain.frag");
+	TerrainRenderer terrainRender("Source/shaders/terrain.vert", "Source/shaders/terrain.frag");
 	terrainRender.shader->enable();
 
 	terrainRender.shader->projectionMatrix->load(mat4::perspective(45, (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 300));

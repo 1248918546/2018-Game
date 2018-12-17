@@ -4,39 +4,39 @@
 float WorldConfigs::EDGE_ABOVE_WATER = 0.5f;
 
 WorldConfigs::WorldConfigs(int seed, float smoothness, int vertexCount, float waterHeight) {
-	this->seed = seed;
-	this->smoothness = smoothness;
-	this->vertexCount = vertexCount;
-	this->waterHeight = waterHeight;
+	this->m_seed = seed;
+	this->m_smoothness = smoothness;
+	this->m_vertexCount = vertexCount;
+	this->m_waterHeight = waterHeight;
 }
 
 WorldConfigs::WorldConfigs() {
-	this->seed = Maths::randomInt(1000000);
-	this->smoothness = 1.0f;
-	this->vertexCount = 136;
-	this->waterHeight = -2.0f;
+	this->m_seed = Maths::randomInt(1000000);
+	this->m_smoothness = 1.0f;
+	this->m_vertexCount = 136;
+	this->m_waterHeight = -2.0f;
 }
 
 int WorldConfigs::getSeed() {
-	return seed;
+	return m_seed;
 }
 
 int WorldConfigs::getVertexCount() {
-	return vertexCount;
+	return m_vertexCount;
 }
 
 float WorldConfigs::getSmoothness() {
-	return smoothness;
+	return m_smoothness;
 }
 
 float WorldConfigs::getWaterHeight() {
-	return waterHeight;
+	return m_waterHeight;
 }
 
 float WorldConfigs::getMaxHeight() {
-	return maxHeight;
+	return m_maxHeight;
 }
 
 void WorldConfigs::setMaxHeight(float height) {
-	maxHeight = height;
+	m_maxHeight = height;
 }

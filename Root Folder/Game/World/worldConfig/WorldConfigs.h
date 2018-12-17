@@ -2,11 +2,11 @@
 
 class WorldConfigs {
 private:
-	int seed;
-	int vertexCount;
-	float smoothness;
-	float waterHeight;
-	float maxHeight;
+	int m_seed;
+	int m_vertexCount;
+	float m_smoothness;
+	float m_waterHeight;
+	float m_maxHeight;
 
 public:
 	static float EDGE_ABOVE_WATER;

@@ -11,16 +11,16 @@ const int Terrain::GRID_SQUARE_SIZE = SIZE / (VERTEX_COUNT - 1);
 Terrain::Terrain() {}
 
 Terrain::Terrain(int gridX, int gridZ, const vector<vector<float>> &_heights, const vector<vector<vec3>> &_normals, const vector<vector<Color>> &_colors) {
-	positions = generatePositionsVector(gridX, gridZ, _heights);
-	normals = generateNormalsVector(gridX, gridZ, _normals);
-	colors = generateColorsVector(gridX, gridZ, _colors);
-	indices = GridGenerator::generateGridIndexBuffer(VERTEX_COUNT, (gridX + gridZ) % 2 == 0);
+	m_positions = generatePositionsVector(gridX, gridZ, _heights);
+	m_normals = generateNormalsVector(gridX, gridZ, _normals);
+	m_colors = generateColorsVector(gridX, gridZ, _colors);
+	m_indices = GridGenerator::generateGridIndexBuffer(VERTEX_COUNT, (gridX + gridZ) % 2 == 0);
 
-	vao = new VertexArray();
-	ibo = new IndexBuffer(&indices[0].x, indices.size() * 3);
-	vao->addBuffer(new Buffer(&positions[0].x, positions.size() * 3, 3), 0);  //position
-	vao->addBuffer(new Buffer(&normals[0].x, normals.size() * 3, 3), 1);      //normal
-	vao->addBuffer(new Buffer(&colors[0].x, colors.size() * 3, 3), 2);        //color
+	m_vao = new VertexArray();
+	m_ibo = new IndexBuffer(&m_indices[0].x, m_indices.size() * 3);
+	m_vao->addBuffer(new Buffer(&m_positions[0].x, m_positions.size() * 3, 3), 0);  //position
+	m_vao->addBuffer(new Buffer(&m_normals[0].x, m_normals.size() * 3, 3), 1);      //normal
+	m_vao->addBuffer(new Buffer(&m_colors[0].x, m_colors.size() * 3, 3), 2);        //color
 }
 
 vector<vec3> Terrain::generatePositionsVector(int gridX, int gridZ, const vector<vector<float>> &_heights) {
@@ -73,20 +73,20 @@ vector<vec3> Terrain::generateColorsVector(int gridX, int gridZ, const vector<ve
 }
 
 VertexArray* Terrain::getVAO() {
-	return vao;
+	return m_vao;
 }
 
 IndexBuffer* Terrain::getIBO() {
-	return ibo;
+	return m_ibo;
 }
 
 
 void Terrain::bindVAO() {
-	vao->bind();
-	ibo->bind();
+	m_vao->bind();
+	m_ibo->bind();
 }
 
 void Terrain::unbindVAO() {
-	ibo->unbind();
-	vao->unbind();
+	m_ibo->unbind();
+	m_vao->unbind();
 }

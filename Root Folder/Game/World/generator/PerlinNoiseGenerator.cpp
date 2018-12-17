@@ -1,7 +1,7 @@
 #include "PerlinNoiseGenerator.h"
 
 float PerlinNoiseGenerator::getNoise(int x, int y) {
-	float result = Maths::randomFloat(x * 49632 + y * 325176 + seed) * 2.0f - 1.0f;
+	float result = Maths::randomFloat(x * 49632 + y * 325176 + m_seed) * 2.0f - 1.0f;
 	return result;
 }
 
@@ -36,8 +36,8 @@ float PerlinNoiseGenerator::getInterpolateNoise(float x, float y) {
 }
 
 float PerlinNoiseGenerator::getEdgeFactor(float x, float y) {
-	float nearEdge = maxSize * 0.1f;
-	float farEdge = maxSize - nearEdge;
+	float nearEdge = m_maxSize * 0.1f;
+	float farEdge = m_maxSize - nearEdge;
 
 	float xFactorNear = Maths::clamp(x / nearEdge, 0, 1);
 	float xFactor = Maths::clamp(1.0f - (x - farEdge) / nearEdge, 0, xFactorNear);
@@ -47,17 +47,17 @@ float PerlinNoiseGenerator::getEdgeFactor(float x, float y) {
 }
 
 PerlinNoiseGenerator::PerlinNoiseGenerator(int seed, float smoothness, float size, float edgeHeight) {
-	this->seed = seed;
-	this->smoothness = smoothness;
-	this->maxSize = size;
-	this->edgeHeight = edgeHeight;
+	this->m_seed = seed;
+	this->m_smoothness = smoothness;
+	this->m_maxSize = size;
+	this->m_edgeHeight = edgeHeight;
 }
 
 PerlinNoiseGenerator::PerlinNoiseGenerator(float smoothness, float size, float edgeHeight) {
-	this->seed = Maths::randomInt(1000000000);
-	this->smoothness = smoothness;
-	this->maxSize = size;
-	this->edgeHeight = edgeHeight;
+	this->m_seed = Maths::randomInt(1000000000);
+	this->m_smoothness = smoothness;
+	this->m_maxSize = size;
+	this->m_edgeHeight = edgeHeight;
 }
 
 float PerlinNoiseGenerator::getPerlinNoise(float x, float y) {
@@ -66,10 +66,10 @@ float PerlinNoiseGenerator::getPerlinNoise(float x, float y) {
 	for (int i = 0; i < OCATAVES; i++) {
 		float freq = (float)(pow(2, i) / d);
 		float amp = (float)pow(ROUGHNESS, i) * AMPLITUDE;
-		total += getInterpolateNoise(x * smoothness * freq, y * smoothness * freq) * amp;
+		total += getInterpolateNoise(x * m_smoothness * freq, y * m_smoothness * freq) * amp;
 	}
 	//return total;
 	float edgeFactor = getEdgeFactor(x, y);
-	float result = total * edgeFactor + (1 - edgeFactor) * edgeHeight;
+	float result = total * edgeFactor + (1 - edgeFactor) * m_edgeHeight;
 	return result;
 }

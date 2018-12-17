@@ -9,12 +9,7 @@ Color::Color(float r, float g, float b) {
 }
 
 Color::Color(float r, float g, float b, bool convert) {
-	if (convert) {
-		color = vec3(r / 255.0f, g / 255.0f, b / 255.0f);
-	}
-	else {
-		color = vec3(r, g, b);
-	}
+	color = vec3(r / 255.0f, g / 255.0f, b / 255.0f);
 }
 
 Color::Color(vec3 col) {

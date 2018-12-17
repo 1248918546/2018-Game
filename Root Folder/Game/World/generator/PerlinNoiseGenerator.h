@@ -8,12 +8,12 @@ private:
 	const float OCATAVES = 5;
 	const float AMPLITUDE = 15;
 
-	float smoothness;
-	float maxSize;
+	float m_smoothness;
+	float m_maxSize;
 
-	float edgeHeight = -1.0f;
+	float m_edgeHeight = -1.0f;
 
-	int seed;
+	int m_seed;
 
 private:
 	float getNoise(int x, int y);
